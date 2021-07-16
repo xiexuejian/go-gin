@@ -27,4 +27,11 @@ func InitRouter(request *gin.Engine) {
 	//	5、Map 作为查询字符串或 post表单 参数
 	request.POST("/mapPost", MapAndPost)
 
+	//	6、上传文件
+	// 给表单限制上传大小 (默认是 32 MiB)
+	request.MaxMultipartMemory = 8 << 20 // 8 MiB
+	//	单个文件
+	request.POST("/simpleFile", SimpleFile)
+	//	多个文件
+	request.POST("/multiFile", MultiFile)
 }
